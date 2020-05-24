@@ -1,14 +1,16 @@
 class SimplePopup {
     #contentLoaded = false;
+    #popupModal = null;
+    #popup = null;
 
     constructor(modal, popup) {
-        this._popupModal = document.getElementById(modal);
-        this._popup = document.getElementById(popup);
+        this.#popupModal = document.getElementById(modal);
+        this.#popup = document.getElementById(popup);
     }
 
     toggleShow() {
         //toggle class
-        this._popupModal.classList.toggle("show-modal");
+        this.#popupModal.classList.toggle("show-modal");
         //check if need load content
         if (!this.#contentLoaded) {
             this._loadContent();
@@ -30,7 +32,7 @@ class SimplePopup {
 
                 const header = res.popupName || 'popup';
 
-                this._popup.innerHTML += `
+                this.#popup.innerHTML += `
                     <header>${header}</header>
                     <div class="content">${res.contentText}</div>
                     `;
